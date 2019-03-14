@@ -1,0 +1,16 @@
+fos_user:
+    db_driver: orm
+    user_class: GNS\UserBundle\Entity\User
+    firewall_name: main
+    from_email:
+        address: noreply@example.com
+        sender_name: App
+
+fos_oauth_server:
+    db_driver: orm
+    client_class:        App\Entity\User\Auth\Client
+    access_token_class:  App\Entity\User\Auth\AccessToken
+    refresh_token_class: App\Entity\User\Auth\RefreshToken
+    auth_code_class:     App\Entity\User\Auth\AuthCode
+    service:
+        user_provider: App\Service\User\UserProvider

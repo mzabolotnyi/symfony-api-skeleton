@@ -10,4 +10,7 @@ return [
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
     Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
     Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
+    FOS\OAuthServerBundle\FOSOAuthServerBundle::class => ['all' => true],
+    FOS\UserBundle\FOSUserBundle::class => ['all' => true],
+    Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
 ];

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f0e2ffa9d6dfa0ddae335198137da09",
+    "content-hash": "78741269dbb70c38bb3abbf5652a1c5b",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1292,6 +1292,220 @@
             "time": "2018-12-04T22:38:24+00:00"
         },
         {
+            "name": "friendsofsymfony/oauth-server-bundle",
+            "version": "1.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfSymfony/FOSOAuthServerBundle.git",
+                "reference": "fcaa25cc49474bdb0db7894f880976fe76ffed23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSOAuthServerBundle/zipball/fcaa25cc49474bdb0db7894f880976fe76ffed23",
+                "reference": "fcaa25cc49474bdb0db7894f880976fe76ffed23",
+                "shasum": ""
+            },
+            "require": {
+                "friendsofsymfony/oauth2-php": "~1.1",
+                "paragonie/random_compat": "^1|^2",
+                "php": "^5.5|^7.0",
+                "symfony/dependency-injection": "^2.8|~3.0|^4.0",
+                "symfony/framework-bundle": "~2.8|~3.0|^4.0",
+                "symfony/security-bundle": "~2.8|~3.0|^4.0"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "~1.0",
+                "doctrine/mongodb-odm": "~1.0",
+                "doctrine/orm": "~2.2",
+                "phing/phing": "~2.4",
+                "php-mock/php-mock-phpunit": "^1.1",
+                "phpunit/phpunit": "~4.8|~5.0",
+                "propel/propel1": "^1.6.5",
+                "symfony/class-loader": "~2.8|~3.0|^4.0",
+                "symfony/console": "~2.8|~3.0|^4.0",
+                "symfony/form": "~2.8|~3.0|^4.0",
+                "symfony/phpunit-bridge": "~2.8|~3.0|^4.0",
+                "symfony/templating": "~2.8|~3.0|^4.0",
+                "symfony/twig-bundle": "~2.8|~3.0|^4.0",
+                "symfony/yaml": "~2.8|~3.0|^4.0",
+                "willdurand/propel-typehintable-behavior": "^1.0.4"
+            },
+            "suggest": {
+                "doctrine/doctrine-bundle": "*",
+                "doctrine/mongodb-odm-bundle": "*",
+                "propel/propel-bundle": "If you want to use Propel with Symfony2, then you will have to install the PropelBundle",
+                "symfony/console": "Needed to be able to use commands",
+                "symfony/form": "Needed to be able to use the AuthorizeFormType",
+                "willdurand/propel-typehintable-behavior": "The Typehintable behavior is useful to add type hints on generated methods, to be compliant with interfaces"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FOS\\OAuthServerBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arnaud Le Blanc",
+                    "email": "arnaud.lb@gmail.com"
+                },
+                {
+                    "name": "FriendsOfSymfony Community",
+                    "homepage": "https://github.com/FriendsOfSymfony/FOSOAuthServerBundle/contributors"
+                }
+            ],
+            "description": "Symfony2 OAuth Server Bundle",
+            "homepage": "http://friendsofsymfony.github.com",
+            "keywords": [
+                "oauth",
+                "oauth2",
+                "server"
+            ],
+            "time": "2019-01-23T15:23:04+00:00"
+        },
+        {
+            "name": "friendsofsymfony/oauth2-php",
+            "version": "1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfSymfony/oauth2-php.git",
+                "reference": "a41fef63f81ef2ef632350a6c7dc66d15baa9240"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/oauth2-php/zipball/a41fef63f81ef2ef632350a6c7dc66d15baa9240",
+                "reference": "a41fef63f81ef2ef632350a6c7dc66d15baa9240",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|>=7.0.8",
+                "symfony/http-foundation": "~3.0|~4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "OAuth2\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arnaud Le Blanc",
+                    "email": "arnaud.lb@gmail.com"
+                },
+                {
+                    "name": "FriendsOfSymfony Community",
+                    "homepage": "https://github.com/FriendsOfSymfony/oauth2-php/contributors"
+                }
+            ],
+            "description": "OAuth2 library",
+            "homepage": "https://github.com/FriendsOfSymfony/oauth2-php",
+            "keywords": [
+                "oauth",
+                "oauth2"
+            ],
+            "time": "2018-01-30T19:58:25+00:00"
+        },
+        {
+            "name": "friendsofsymfony/user-bundle",
+            "version": "v2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
+                "reference": "1049935edd24ec305cc6cfde1875372fa9600446"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/1049935edd24ec305cc6cfde1875372fa9600446",
+                "reference": "1049935edd24ec305cc6cfde1875372fa9600446",
+                "shasum": ""
+            },
+            "require": {
+                "paragonie/random_compat": "^1 || ^2",
+                "php": "^5.5.9 || ^7.0",
+                "symfony/form": "^2.8 || ^3.0 || ^4.0",
+                "symfony/framework-bundle": "^2.8 || ^3.0 || ^4.0",
+                "symfony/security-bundle": "^2.8 || ^3.0 || ^4.0",
+                "symfony/templating": "^2.8 || ^3.0 || ^4.0",
+                "symfony/twig-bundle": "^2.8 || ^3.0 || ^4.0",
+                "symfony/validator": "^2.8 || ^3.0 || ^4.0",
+                "twig/twig": "^1.28 || ^2.0"
+            },
+            "conflict": {
+                "doctrine/doctrine-bundle": "<1.3",
+                "symfony/doctrine-bridge": "<2.7"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "^1.3",
+                "friendsofphp/php-cs-fixer": "^2.2",
+                "phpunit/phpunit": "^4.8.35|^5.7.11|^6.5",
+                "swiftmailer/swiftmailer": "^4.3 || ^5.0 || ^6.0",
+                "symfony/console": "^2.8 || ^3.0 || ^4.0",
+                "symfony/phpunit-bridge": "^2.8 || ^3.0 || ^4.0",
+                "symfony/yaml": "^2.8 || ^3.0 || ^4.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FOS\\UserBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christophe Coevoet",
+                    "email": "stof@notk.org"
+                },
+                {
+                    "name": "FriendsOfSymfony Community",
+                    "homepage": "https://github.com/friendsofsymfony/FOSUserBundle/contributors"
+                },
+                {
+                    "name": "Thibault Duplessis"
+                }
+            ],
+            "description": "Symfony FOSUserBundle",
+            "homepage": "http://friendsofsymfony.github.com",
+            "keywords": [
+                "User management"
+            ],
+            "time": "2018-03-08T08:59:27+00:00"
+        },
+        {
             "name": "gedmo/doctrine-extensions",
             "version": "v2.4.36",
             "source": {
@@ -1499,6 +1713,57 @@
                 "psr-3"
             ],
             "time": "2018-11-05T09:00:11+00:00"
+        },
+        {
+            "name": "nikic/php-parser",
+            "version": "v4.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/PHP-Parser.git",
+                "reference": "5221f49a608808c1e4d436df32884cbc1b821ac0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/5221f49a608808c1e4d436df32884cbc1b821ac0",
+                "reference": "5221f49a608808c1e4d436df32884cbc1b821ac0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.5 || ^7.0"
+            },
+            "bin": [
+                "bin/php-parse"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpParser\\": "lib/PhpParser"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov"
+                }
+            ],
+            "description": "A PHP parser written in PHP",
+            "keywords": [
+                "parser",
+                "php"
+            ],
+            "time": "2019-02-16T20:54:15+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -1809,6 +2074,88 @@
                 "simple-cache"
             ],
             "time": "2017-10-23T01:57:42+00:00"
+        },
+        {
+            "name": "ramsey/uuid",
+            "version": "3.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramsey/uuid.git",
+                "reference": "d09ea80159c1929d75b3f9c60504d613aeb4a1e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/d09ea80159c1929d75b3f9c60504d613aeb4a1e3",
+                "reference": "d09ea80159c1929d75b3f9c60504d613aeb4a1e3",
+                "shasum": ""
+            },
+            "require": {
+                "paragonie/random_compat": "^1.0|^2.0|9.99.99",
+                "php": "^5.4 || ^7.0",
+                "symfony/polyfill-ctype": "^1.8"
+            },
+            "replace": {
+                "rhumsaa/uuid": "self.version"
+            },
+            "require-dev": {
+                "codeception/aspect-mock": "^1.0 | ~2.0.0",
+                "doctrine/annotations": "~1.2.0",
+                "goaop/framework": "1.0.0-alpha.2 | ^1.0 | ~2.1.0",
+                "ircmaxell/random-lib": "^1.1",
+                "jakub-onderka/php-parallel-lint": "^0.9.0",
+                "mockery/mockery": "^0.9.9",
+                "moontoast/math": "^1.1",
+                "php-mock/php-mock-phpunit": "^0.3|^1.1",
+                "phpunit/phpunit": "^4.7|^5.0|^6.5",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "suggest": {
+                "ext-ctype": "Provides support for PHP Ctype functions",
+                "ext-libsodium": "Provides the PECL libsodium extension for use with the SodiumRandomGenerator",
+                "ext-uuid": "Provides the PECL UUID extension for use with the PeclUuidTimeGenerator and PeclUuidRandomGenerator",
+                "ircmaxell/random-lib": "Provides RandomLib for use with the RandomLibAdapter",
+                "moontoast/math": "Provides support for converting UUID to 128-bit integer (in string form).",
+                "ramsey/uuid-console": "A console application for generating UUIDs with ramsey/uuid",
+                "ramsey/uuid-doctrine": "Allows the use of Ramsey\\Uuid\\Uuid as Doctrine field type."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ramsey\\Uuid\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marijn Huizendveld",
+                    "email": "marijn.huizendveld@gmail.com"
+                },
+                {
+                    "name": "Thibaud Fabre",
+                    "email": "thibaud@aztech.io"
+                },
+                {
+                    "name": "Ben Ramsey",
+                    "email": "ben@benramsey.com",
+                    "homepage": "https://benramsey.com"
+                }
+            ],
+            "description": "Formerly rhumsaa/uuid. A PHP 5.4+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
+            "homepage": "https://github.com/ramsey/uuid",
+            "keywords": [
+                "guid",
+                "identifier",
+                "uuid"
+            ],
+            "time": "2018-07-19T23:38:55+00:00"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -3179,6 +3526,72 @@
                 "localization"
             ],
             "time": "2019-02-23T15:17:42+00:00"
+        },
+        {
+            "name": "symfony/maker-bundle",
+            "version": "v1.11.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/maker-bundle.git",
+                "reference": "186ffc80b8f363e04ea3c2ebf49e1263a84b4e39"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/186ffc80b8f363e04ea3c2ebf49e1263a84b4e39",
+                "reference": "186ffc80b8f363e04ea3c2ebf49e1263a84b4e39",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/inflector": "^1.2",
+                "nikic/php-parser": "^4.0",
+                "php": "^7.0.8",
+                "symfony/config": "^3.4|^4.0",
+                "symfony/console": "^3.4|^4.0",
+                "symfony/dependency-injection": "^3.4|^4.0",
+                "symfony/filesystem": "^3.4|^4.0",
+                "symfony/finder": "^3.4|^4.0",
+                "symfony/framework-bundle": "^3.4|^4.0",
+                "symfony/http-kernel": "^3.4|^4.0"
+            },
+            "require-dev": {
+                "allocine/twigcs": "^3.0",
+                "doctrine/doctrine-bundle": "^1.8",
+                "doctrine/orm": "^2.3",
+                "friendsofphp/php-cs-fixer": "^2.8",
+                "symfony/phpunit-bridge": "^3.4|^4.0",
+                "symfony/process": "^3.4|^4.0",
+                "symfony/yaml": "^3.4|^4.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Bundle\\MakerBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Maker helps you create empty commands, controllers, form classes, tests and more so you can forget about writing boilerplate code.",
+            "homepage": "https://symfony.com/doc/current/bundles/SymfonyMakerBundle/index.html",
+            "keywords": [
+                "code generator",
+                "generator",
+                "scaffold",
+                "scaffolding"
+            ],
+            "time": "2019-03-11T15:55:09+00:00"
         },
         {
             "name": "symfony/monolog-bridge",
