@@ -14,3 +14,16 @@ fos_oauth_server:
     auth_code_class:     App\Entity\User\Auth\AuthCode
     service:
         user_provider: App\Service\User\UserProvider
+
+fos_rest:
+    routing_loader:
+        default_format: json
+        include_format: false
+    param_fetcher_listener: true
+    body_listener: true
+    body_converter:
+        enabled: true
+    view:
+        view_response_listener: force
+    serializer:
+        serialize_null: true
