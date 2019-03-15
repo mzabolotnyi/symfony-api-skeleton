@@ -1,5 +1,5 @@
 <?php
-namespace App\Entity\User\Auth;
+namespace App\Entity\OAuth;
 
 use FOS\OAuthServerBundle\Entity\Client as BaseClient;
 use Doctrine\ORM\Mapping as ORM;

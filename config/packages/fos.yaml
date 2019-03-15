@@ -1,6 +1,6 @@
 fos_user:
     db_driver: orm
-    user_class: GNS\UserBundle\Entity\User
+    user_class: App\Entity\User\User
     firewall_name: main
     from_email:
         address: noreply@example.com
@@ -8,12 +8,12 @@ fos_user:
 
 fos_oauth_server:
     db_driver: orm
-    client_class:        App\Entity\User\Auth\Client
-    access_token_class:  App\Entity\User\Auth\AccessToken
-    refresh_token_class: App\Entity\User\Auth\RefreshToken
-    auth_code_class:     App\Entity\User\Auth\AuthCode
+    client_class:        App\Entity\OAuth\Client
+    access_token_class:  App\Entity\OAuth\AccessToken
+    refresh_token_class: App\Entity\OAuth\RefreshToken
+    auth_code_class:     App\Entity\OAuth\AuthCode
     service:
-        user_provider: App\Service\User\UserProvider
+        user_provider: fos_user.user_provider.username_email
 
 fos_rest:
     routing_loader:

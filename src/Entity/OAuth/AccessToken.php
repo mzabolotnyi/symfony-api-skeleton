@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Entity\User\Auth;
+namespace App\Entity\OAuth;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\OAuthServerBundle\Entity\RefreshToken as BaseRefreshToken;
+use FOS\OAuthServerBundle\Entity\AccessToken as BaseAccessToken;
 use App\Entity\User\User;
 
 /**
- * RefreshToken
+ * AccessToken
  *
- * @ORM\Table(name="oauth2_refresh_token")
+ * @ORM\Table(name="oauth2_access_token")
  * @ORM\Entity
  */
-class RefreshToken extends BaseRefreshToken
+class AccessToken extends BaseAccessToken
 {
     /**
      * @var int
@@ -24,7 +24,7 @@ class RefreshToken extends BaseRefreshToken
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User\Auth\Client")
+     * @ORM\ManyToOne(targetEntity="App\Entity\OAuth\Client")
      * @ORM\JoinColumn(name="client_id", referencedColumnName="id", nullable=false)
      */
     protected $client;
@@ -49,7 +49,7 @@ class RefreshToken extends BaseRefreshToken
      * Set client
      *
      * @param \FOS\OAuthServerBundle\Model\ClientInterface $client
-     * @return RefreshToken
+     * @return AccessToken
      */
     public function setClient(\FOS\OAuthServerBundle\Model\ClientInterface $client)
     {
@@ -72,7 +72,7 @@ class RefreshToken extends BaseRefreshToken
      * Set user
      *
      * @param \Symfony\Component\Security\Core\User\UserInterface
-     * @return RefreshToken
+     * @return AccessToken
      */
     public function setUser(\Symfony\Component\Security\Core\User\UserInterface $user = null)
     {

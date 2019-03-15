@@ -76,21 +76,59 @@ class User extends BaseUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="registered_at", type="datetime", nullable=true)
+     * @ORM\Column(name="email_confirmed_at", type="datetime", nullable=true)
      * @Gedmo\Versioned
      */
-    private $registeredAt;
+    private $emailConfirmedAt;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="need_email_confirm", type="boolean", nullable=true)
+     * @Gedmo\Versioned
+     */
+    private $needEmailConfirm;
 
     /**
      * @Gedmo\Versioned
      */
     protected $email;
 
+    /**
+     * @Gedmo\Versioned
+     */
+    protected $enabled;
+
+    /**
+     * @Gedmo\Versioned
+     */
+    protected $confirmationToken;
+
+    /**
+     * @Gedmo\Versioned
+     */
+    protected $passwordRequestedAt;
+
+    /**
+     * @Gedmo\Versioned
+     */
+    protected $roles;
+
     public function __construct()
     {
         parent::__construct();
         $this->uuid = Uuid::uuid4();
         $this->enabled = true;
+        $this->needEmailConfirm = false;
+    }
+
+    public function setEmail($email)
+    {
+        $email = is_null($email) ? '' : $email;
+        parent::setEmail($email);
+        $this->setUsername($email);
+
+        return $this;
     }
 
     public function getLastName(): ?string
@@ -129,14 +167,31 @@ class User extends BaseUser
         return $this;
     }
 
-    public function getRegisteredAt(): ?\DateTimeInterface
+    public function getEmailConfirmedAt(): ?\DateTimeInterface
     {
-        return $this->registeredAt;
+        return $this->emailConfirmedAt;
     }
 
-    public function setRegisteredAt(?\DateTimeInterface $registeredAt): self
+    public function setEmailConfirmedAt(?\DateTimeInterface $emailConfirmedAt): self
     {
-        $this->registeredAt = $registeredAt;
+        $this->emailConfirmedAt = $emailConfirmedAt;
+
+        return $this;
+    }
+
+    public function isEmailConfirmed(): bool
+    {
+        return null === $this->emailConfirmedAt;
+    }
+
+    public function needEmailConfirm(): bool
+    {
+        return $this->needEmailConfirm;
+    }
+
+    public function setNeedEmailConfirm(bool $needEmailConfirm): User
+    {
+        $this->needEmailConfirm = $needEmailConfirm;
 
         return $this;
     }
