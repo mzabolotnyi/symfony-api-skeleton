@@ -25,3 +25,12 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # FOS OAuth autowire
+    FOS\OAuthServerBundle\Storage\OAuthStorage:
+        public: true
+        autowire: true
+
+    App\Service\OAuth\OAuth2:
+        public: true
+        arguments: ['@FOS\OAuthServerBundle\Storage\OAuthStorage']

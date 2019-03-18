@@ -32,11 +32,6 @@ class CreateOAuthClientCommand extends Command
             ->setDescription('Command for creating oAuth client');
     }
 
-    /**
-     * @param InputInterface $input
-     * @param OutputInterface $output
-     * @return int|null|void
-     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $client = $this->clientManager->createClient();
