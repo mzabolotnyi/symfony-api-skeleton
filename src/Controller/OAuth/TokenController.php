@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\User;
+namespace App\Controller\OAuth;
 
 use App\Service\OAuth\OAuth2;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/oauth")
  */
-class OAuthController extends AbstractFOSRestController
+class TokenController extends AbstractFOSRestController
 {
     /**
      * @Route("/token", methods={"POST"})
