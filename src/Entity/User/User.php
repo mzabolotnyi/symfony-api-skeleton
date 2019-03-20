@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping\Column;
 use FOS\UserBundle\Model\User as BaseUser;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\Uuid;
+use JMS\Serializer\Annotation as Serializer;
+use App\Constant\Serialization\Group;
 
 /**
  * @AttributeOverrides({
@@ -52,6 +54,7 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @Serializer\Groups(Group::LIST)
      * @ORM\Column(name="last_name", type="string", nullable=true)
      * @Gedmo\Versioned
      */
@@ -60,6 +63,7 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @Serializer\Groups(Group::LIST)
      * @ORM\Column(name="first_name", type="string", nullable=true)
      * @Gedmo\Versioned
      */
@@ -68,6 +72,7 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @Serializer\Groups(Group::LIST)
      * @ORM\Column(name="middle_name", type="string", nullable=true)
      * @Gedmo\Versioned
      */
@@ -90,6 +95,7 @@ class User extends BaseUser
     private $needEmailConfirm;
 
     /**
+     * @Serializer\Groups(Group::LIST)
      * @Gedmo\Versioned
      */
     protected $email;
@@ -110,6 +116,7 @@ class User extends BaseUser
     protected $passwordRequestedAt;
 
     /**
+     * @Serializer\Groups(Group::DETAIL)
      * @Gedmo\Versioned
      */
     protected $roles;
@@ -117,7 +124,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->uuid = Uuid::uuid4();
+        $this->uuid = Uuid::uuid4()->toString();
         $this->enabled = true;
         $this->needEmailConfirm = false;
     }
@@ -184,7 +191,7 @@ class User extends BaseUser
         return null === $this->emailConfirmedAt;
     }
 
-    public function needEmailConfirm(): bool
+    public function isNeedEmailConfirm(): bool
     {
         return $this->needEmailConfirm;
     }

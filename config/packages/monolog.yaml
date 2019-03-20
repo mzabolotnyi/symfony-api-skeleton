@@ -1,0 +1,6 @@
+monolog:
+    handlers:
+        uncaught_exceptions:
+            type: stream
+            path: '%kernel.logs_dir%/uncaught_exceptions.log'
+            channels: ['uncaught_exceptions']

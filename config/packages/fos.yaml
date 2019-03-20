@@ -23,6 +23,9 @@ fos_rest:
     body_listener: true
     body_converter:
         enabled: true
+    format_listener:
+        rules:
+        - { path: '^/', priorities: ['json', 'xml', 'html'], fallback_format: json, prefer_extension: false }
     view:
         view_response_listener: force
     serializer:
