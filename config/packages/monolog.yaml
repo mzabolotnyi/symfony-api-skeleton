@@ -4,3 +4,7 @@ monolog:
             type: stream
             path: '%kernel.logs_dir%/uncaught_exceptions.log'
             channels: ['uncaught_exceptions']
+        mailer:
+            type: stream
+            path: '%kernel.logs_dir%/mailer.log'
+            channels: ['mailer']

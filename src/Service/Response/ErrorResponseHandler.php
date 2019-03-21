@@ -33,13 +33,6 @@ class ErrorResponseHandler
         return $this->response($data, $code);
     }
 
-    public function handleFormError(FormInterface $form)
-    {
-        $data = $this->getErrorsFromForm($form);
-
-        return $this->response($data, JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
-    }
-
     public function handleInternalError($message)
     {
         $details = ['timestamp' => time()];
@@ -142,24 +135,5 @@ class ErrorResponseHandler
         }
 
         return $errorData;
-    }
-
-    private function getErrorsFromForm(FormInterface $form)
-    {
-        $errors = array();
-
-        foreach ($form->getErrors() as $error) {
-            $errors[] = $error->getMessage();
-        }
-
-        foreach ($form->all() as $childForm) {
-            if ($childForm instanceof FormInterface) {
-                if ($childErrors = $this->getErrorsFromForm($childForm)) {
-                    $errors[$childForm->getName()] = $childErrors;
-                }
-            }
-        }
-
-        return $errors;
     }
 }

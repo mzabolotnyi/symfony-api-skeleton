@@ -1,0 +1,16 @@
+{% extends 'email/base.html.twig' %}
+
+{% block subject %}{{ 'mail.user.confirmation.subject'|trans }}{% endblock %}
+
+{% block content %}
+
+    <p>
+        {{ 'mail.user.confirmation.content.text'|trans }}
+    </p>
+
+    <p>
+        {#{{ urlGenerator.generateAppUrl('confirmation?token=' ~ user.confirmationToken) }}#}
+        {{ 'confirmation?token=' ~ user.confirmationToken|appUrl }}
+    </p>
+
+{% endblock %}

@@ -26,11 +26,11 @@ class ExceptionListener
     /** @var ErrorResponseHandler */
     private $responseHandler;
 
-    public function __construct(ErrorResponseHandler $responseHandler, LoggerInterface $logger, $appEnv)
+    public function __construct(ErrorResponseHandler $responseHandler, LoggerInterface $logger)
     {
         $this->responseHandler = $responseHandler;
         $this->logger = $logger;
-        $this->appEnv = $appEnv;
+        $this->appEnv = getenv('APP_ENV');
     }
 
     public function onKernelException(GetResponseForExceptionEvent $event)

@@ -3,22 +3,14 @@
 namespace App\Controller;
 
 use App\Constant\Serialization\Group;
-use App\Service\Response\ErrorResponseHandler;
 use FOS\RestBundle\Context\Context;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class RestController extends AbstractFOSRestController
 {
-    /** @var ErrorResponseHandler */
-    private $errorResponseHandler;
-
-    public function __construct(ErrorResponseHandler $errorResponseHandler)
-    {
-        $this->errorResponseHandler = $errorResponseHandler;
-    }
-
     /**
      * Generate response
      *
@@ -35,7 +27,7 @@ class RestController extends AbstractFOSRestController
     public function response($data = null, $groups = null, int $code = null, array $headers = [])
     {
         if ($data instanceof FormInterface) {
-            return $this->errorResponseHandler->handleFormError($data);
+            return $this->handleFormError($data);
         }
 
         if (\is_string($groups)) {
@@ -55,5 +47,31 @@ class RestController extends AbstractFOSRestController
         }
 
         return $this->handleView($view);
+    }
+
+    private function handleFormError(FormInterface $form)
+    {
+        $data = $this->getFormErrors($form);
+
+        return new JsonResponse($data, JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+    }
+
+    private function getFormErrors(FormInterface $form)
+    {
+        $errors = array();
+
+        foreach ($form->getErrors() as $error) {
+            $errors[] = $error->getMessage();
+        }
+
+        foreach ($form->all() as $childForm) {
+            if ($childForm instanceof FormInterface) {
+                if ($childErrors = $this->getFormErrors($childForm)) {
+                    $errors[$childForm->getName()] = $childErrors;
+                }
+            }
+        }
+
+        return $errors;
     }
 }
