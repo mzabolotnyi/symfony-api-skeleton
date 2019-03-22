@@ -191,15 +191,15 @@ class User extends BaseUser
         return null !== $this->emailConfirmedAt;
     }
 
-    public function isNeedEmailConfirm(): bool
-    {
-        return $this->needEmailConfirm;
-    }
-
     public function setNeedEmailConfirm(bool $needEmailConfirm): User
     {
         $this->needEmailConfirm = $needEmailConfirm;
 
         return $this;
+    }
+
+    public function needConfirmEmail(): bool
+    {
+        return $this->needEmailConfirm && !$this->isEmailConfirmed();
     }
 }

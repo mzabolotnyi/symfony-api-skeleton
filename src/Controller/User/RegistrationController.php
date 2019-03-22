@@ -110,7 +110,7 @@ class RegistrationController extends RestController
             throw new NotFoundException('error.not_found.user');
         }
 
-        if (!$user->isNeedEmailConfirm() || $user->isEmailConfirmed()) {
+        if (!$user->needConfirmEmail()) {
             throw new ForbiddenException('error.forbidden.common');
         }
 
