@@ -19,12 +19,7 @@ class UrlExtension extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new TwigFunction('appUrl', [$this, 'generateAppUrl']),
+            new TwigFunction('generateAppUrl', [$this->urlGenerator, 'generateAppUrl'])
         ];
-    }
-
-    public function generateAppUrl($path)
-    {
-        return $this->urlGenerator->generateAppUrl($path);
     }
 }

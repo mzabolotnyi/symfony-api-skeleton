@@ -50,11 +50,6 @@ services:
         public: true
         arguments: ['@FOS\OAuthServerBundle\Storage\OAuthStorage']
 
-    # Twig Extension
-    App\Twig\UrlExtension:
-        tags:
-            - { name: twig.extension }
-
     # Listeners
     App\EventListener\Kernel\LocaleListener:
         tags:

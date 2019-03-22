@@ -2,15 +2,14 @@
 
 {% block subject %}{{ 'mail.user.confirmation.subject'|trans }}{% endblock %}
 
-{% block content %}
+{% block body %}
 
     <p>
-        {{ 'mail.user.confirmation.content.text'|trans }}
+        {{ 'mail.user.confirmation.content.text'|trans }}:
     </p>
 
     <p>
-        {#{{ urlGenerator.generateAppUrl('confirmation?token=' ~ user.confirmationToken) }}#}
-        {{ 'confirmation?token=' ~ user.confirmationToken|appUrl }}
+        {{ generateAppUrl('confirmation?token=' ~ user.confirmationToken) }}
     </p>
 
 {% endblock %}
