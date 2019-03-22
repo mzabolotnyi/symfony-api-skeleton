@@ -116,7 +116,6 @@ class User extends BaseUser
     protected $passwordRequestedAt;
 
     /**
-     * @Serializer\Groups(Group::DETAIL)
      * @Gedmo\Versioned
      */
     protected $roles;
@@ -127,6 +126,16 @@ class User extends BaseUser
         $this->uuid = Uuid::uuid4()->toString();
         $this->enabled = true;
         $this->needEmailConfirm = false;
+    }
+
+    /**
+     * @Serializer\Groups(Group::DETAIL)
+     * @Serializer\VirtualProperty()
+     * @Serializer\SerializedName("roles")
+     */
+    public function getRolesVirtual()
+    {
+        return $this->getRoles();
     }
 
     public function setEmail($email)

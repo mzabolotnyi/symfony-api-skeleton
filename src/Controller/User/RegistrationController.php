@@ -7,7 +7,7 @@ use App\Controller\RestController;
 use App\Entity\User\User;
 use App\Exception\ForbiddenException;
 use App\Exception\NotFoundException;
-use App\Form\User\UserRegistrationType;
+use App\Form\User\RegistrationType;
 use App\Service\Notification\Mailer;
 use FOS\UserBundle\Model\UserManagerInterface;
 use FOS\UserBundle\Util\TokenGeneratorInterface;
@@ -46,7 +46,7 @@ class RegistrationController extends RestController
     public function register(Request $request)
     {
         $user = new User();
-        $form = $this->createForm(UserRegistrationType::class, $user);
+        $form = $this->createForm(RegistrationType::class, $user);
         $form->submit($request->request->all());
 
         $user->setNeedEmailConfirm(true)
@@ -69,7 +69,6 @@ class RegistrationController extends RestController
      * @param Request $request
      *
      * @return Response
-     * @throws NotFoundException
      */
     public function confirm(Request $request)
     {
@@ -96,8 +95,6 @@ class RegistrationController extends RestController
      * @param Request $request
      *
      * @return Response
-     * @throws NotFoundException
-     * @throws ForbiddenException
      */
     public function resendConfirmationEmail(Request $request)
     {

@@ -1,7 +1,7 @@
 fos_user:
     db_driver: orm
     user_class: App\Entity\User\User
-    firewall_name: main
+    firewall_name: api
     from_email:
         address: noreply@example.com
         sender_name: App

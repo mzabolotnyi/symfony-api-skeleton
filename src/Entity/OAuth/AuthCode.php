@@ -10,7 +10,7 @@ use App\Entity\User\User;
  * AuthCode
  *
  * @ORM\Table(name="oauth2_auth_code")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\OAuth\AuthCodeRepository")
  */
 class AuthCode extends BaseAuthCode
 {

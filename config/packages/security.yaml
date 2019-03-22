@@ -9,21 +9,29 @@ security:
 
     firewalls:
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-        main:
-            anonymous: true
+            pattern:   ^/(_(profiler|wdt)|css|images|js)/
+            security:  false
 
-            # activate different ways to authenticate
+        api_doc:
+            pattern:   ^/api/doc
+            security:  false
 
-            # http_basic: true
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+        api_oauth_token:
+            pattern:   ^/api/v1/oauth/token
+            security:  false
 
-            # form_login: true
-            # https://symfony.com/doc/current/security/form_login_setup.html
+        api_registration:
+            pattern:   ^/api/v1/registration
+            security:  false
 
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
+        api_restore_password:
+            pattern:   ^/api/v1/restore-password
+            security:  false
+
+        api:
+            pattern:   ^/api
+            fos_oauth: true
+            stateless: true
+
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/api,                           role: IS_AUTHENTICATED_FULLY }

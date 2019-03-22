@@ -10,7 +10,7 @@ use App\Entity\User\User;
  * AccessToken
  *
  * @ORM\Table(name="oauth2_access_token")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\OAuth\AccessTokenRepository")
  */
 class AccessToken extends BaseAccessToken
 {

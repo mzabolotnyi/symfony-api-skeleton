@@ -41,7 +41,7 @@ services:
         calls:
             - [ setAnnotationReader, [ '@annotation_reader' ] ]
 
-    # FOS OAuth Autowire
+    # FOS OAuth
     FOS\OAuthServerBundle\Storage\OAuthStorage:
         public: true
         autowire: true
@@ -50,7 +50,13 @@ services:
         public: true
         arguments: ['@FOS\OAuthServerBundle\Storage\OAuthStorage']
 
-    # Listeners
+    # JMS Serializer
+    jms_serializer.serialized_name_annotation_strategy:
+        class: App\Serializer\CustomNameAnnotationStrategy
+        arguments:
+            - '@jms_serializer.camel_case_naming_strategy'
+
+    # App Listeners
     App\EventListener\Kernel\LocaleListener:
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: -1 }

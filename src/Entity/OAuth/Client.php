@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="oauth2_client")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\OAuth\ClientRepository")
  */
 class Client extends BaseClient
 {

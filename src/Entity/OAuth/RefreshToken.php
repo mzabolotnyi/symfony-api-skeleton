@@ -10,7 +10,7 @@ use App\Entity\User\User;
  * RefreshToken
  *
  * @ORM\Table(name="oauth2_refresh_token")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\OAuth\RefreshTokenRepository")
  */
 class RefreshToken extends BaseRefreshToken
 {
