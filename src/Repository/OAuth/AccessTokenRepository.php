@@ -3,7 +3,7 @@
 namespace App\Repository\OAuth;
 
 use App\Entity\OAuth\AccessToken;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Repository\BaseRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method AccessToken[]    findAll()
  * @method AccessToken[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AccessTokenRepository extends ServiceEntityRepository
+class AccessTokenRepository extends BaseRepository
 {
     public function __construct(RegistryInterface $registry)
     {

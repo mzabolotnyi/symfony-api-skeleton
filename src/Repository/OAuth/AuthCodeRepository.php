@@ -3,7 +3,7 @@
 namespace App\Repository\OAuth;
 
 use App\Entity\OAuth\AuthCode;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Repository\BaseRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method AuthCode[]    findAll()
  * @method AuthCode[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AuthCodeRepository extends ServiceEntityRepository
+class AuthCodeRepository extends BaseRepository
 {
     public function __construct(RegistryInterface $registry)
     {

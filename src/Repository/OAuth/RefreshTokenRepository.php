@@ -3,7 +3,7 @@
 namespace App\Repository\OAuth;
 
 use App\Entity\OAuth\RefreshToken;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Repository\BaseRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method RefreshToken[]    findAll()
  * @method RefreshToken[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class RefreshTokenRepository extends ServiceEntityRepository
+class RefreshTokenRepository extends BaseRepository
 {
     public function __construct(RegistryInterface $registry)
     {
