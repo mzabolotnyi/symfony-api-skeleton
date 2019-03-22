@@ -35,7 +35,11 @@ class CreateOAuthClientCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $client = $this->clientManager->createClient();
-        $client->setAllowedGrantTypes([OAuth2::GRANT_TYPE_USER_CREDENTIALS, OAuth2::GRANT_TYPE_REFRESH_TOKEN]);
+        $client->setAllowedGrantTypes([
+            OAuth2::GRANT_TYPE_USER_CREDENTIALS,
+            OAuth2::GRANT_TYPE_REFRESH_TOKEN,
+            OAuth2::GRANT_TYPE_AUTH_CODE
+        ]);
 
         $this->clientManager->updateClient($client);
 

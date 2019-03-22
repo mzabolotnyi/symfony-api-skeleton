@@ -5,6 +5,8 @@ namespace App\Controller\User;
 use App\Constant\Serialization\Group;
 use App\Controller\RestController;
 use App\Entity\User\User;
+use App\Exception\ForbiddenException;
+use App\Exception\NotFoundException;
 use App\Form\User\UserRegistrationType;
 use App\Service\Notification\Mailer;
 use FOS\UserBundle\Model\UserManagerInterface;
@@ -12,7 +14,6 @@ use FOS\UserBundle\Util\TokenGeneratorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/registration")
@@ -42,7 +43,7 @@ class RegistrationController extends RestController
      *
      * @return Response
      */
-    public function register(TranslatorInterface $translator, Request $request)
+    public function register(Request $request)
     {
         $user = new User();
         $form = $this->createForm(UserRegistrationType::class, $user);
@@ -55,10 +56,70 @@ class RegistrationController extends RestController
             return $this->response($form);
         }
 
-//        $this->userManager->updateUser($user);
+        $this->userManager->updateUser($user);
 
         $this->mailer->sendConfirmationEmailMessage($user);
 
         return $this->response($user, Group::LIST_DETAIL);
+    }
+
+    /**
+     * @Route("/confirm", methods={"POST"})
+     *
+     * @param Request $request
+     *
+     * @return Response
+     * @throws NotFoundException
+     */
+    public function confirm(Request $request)
+    {
+        $token = $request->get('token');
+
+        /** @var User $user */
+        $user = $this->userManager->findUserByConfirmationToken($token);
+
+        if (null === $user) {
+            throw new NotFoundException('error.not_found.user');
+        }
+
+        $user->setConfirmationToken(null)
+            ->setEmailConfirmedAt(new \DateTime());
+
+        $this->userManager->updateUser($user);
+
+        return $this->response();
+    }
+
+    /**
+     * @Route("/confirmation-email", methods={"POST"})
+     *
+     * @param Request $request
+     *
+     * @return Response
+     * @throws NotFoundException
+     * @throws ForbiddenException
+     */
+    public function resendConfirmationEmail(Request $request)
+    {
+        $email = $request->get('email');
+
+        /** @var User $user */
+        $user = $this->userManager->findUserByEmail($email);
+
+        if (null === $user) {
+            throw new NotFoundException('error.not_found.user');
+        }
+
+        if (!$user->isNeedEmailConfirm() || $user->isEmailConfirmed()) {
+            throw new ForbiddenException('error.forbidden.common');
+        }
+
+        $user->setConfirmationToken($this->tokenGenerator->generateToken());
+
+        $this->userManager->updateUser($user);
+
+        $this->mailer->sendConfirmationEmailMessage($user);
+
+        return $this->response();
     }
 }

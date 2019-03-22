@@ -1,10 +1,11 @@
 error:
     not_found:
         common: Объект не найден
+        user: Пользователь не найден
     bad_request:
         common: Ошибка при выполнении запроса
     data_conflict:
-        common: Данные конфликтуют
+        common: Конфликт данных
     forbidden:
         common: Недостаточно прав для выполнения действия
     foreign_key_constraint_violation:

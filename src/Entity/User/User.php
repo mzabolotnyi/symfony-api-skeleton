@@ -188,7 +188,7 @@ class User extends BaseUser
 
     public function isEmailConfirmed(): bool
     {
-        return null === $this->emailConfirmedAt;
+        return null !== $this->emailConfirmedAt;
     }
 
     public function isNeedEmailConfirm(): bool
