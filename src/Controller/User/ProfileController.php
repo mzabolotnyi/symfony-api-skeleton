@@ -4,6 +4,7 @@ namespace App\Controller\User;
 
 use App\Constant\Serialization\Group;
 use App\Controller\RestController;
+use App\Form\User\ChangePasswordType;
 use App\Form\User\ProfileType;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +29,7 @@ class ProfileController extends RestController
      *
      * @return Response
      */
-    public function getAction()
+    public function getProfile()
     {
         return $this->response($this->getUser(), Group::LIST_DETAIL);
     }
@@ -40,10 +41,27 @@ class ProfileController extends RestController
      *
      * @return Response
      */
-    public function update(Request $request)
+    public function updateProfile(Request $request)
+    {
+        return $this->updateUser(ProfileType::class, $request);
+    }
+
+    /**
+     * @Route("/change-password", methods={"PUT"})
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function changePassword(Request $request)
+    {
+        return $this->updateUser(ChangePasswordType::class, $request);
+    }
+
+    private function updateUser($type, Request $request)
     {
         $user = $this->getUser();
-        $form = $this->createForm(ProfileType::class, $user);
+        $form = $this->createForm($type, $user);
         $form->submit($request->request->all(), false);
 
         if (!$form->isValid()) {

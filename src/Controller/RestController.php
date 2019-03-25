@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class RestController extends AbstractFOSRestController
+abstract class RestController extends AbstractFOSRestController
 {
     /**
      * Generate response

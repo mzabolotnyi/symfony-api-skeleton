@@ -51,7 +51,7 @@ class CreateAdminUserCommand extends Command
         $user = $this->userManager->createUser();
         $user->setEmail($email)
             ->setPlainPassword($password)
-            ->addRole(Role::ADMIN);
+            ->addRole(Role::ROLE_ADMIN);
 
         $this->userManager->updateUser($user);
 

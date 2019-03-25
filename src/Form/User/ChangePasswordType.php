@@ -6,8 +6,9 @@ use App\Entity\User\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
-class RegistrationType extends AbstractType
+class ChangePasswordType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,10 +17,12 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email')
-            ->add('firstName')
-            ->add('lastName')
-            ->add('middleName')
+            ->add('oldPassword', null, [
+                'mapped' => false,
+                'constraints' => [
+                    new UserPassword()
+                ]
+            ])
             ->add('plainPassword');
     }
 
@@ -32,7 +35,7 @@ class RegistrationType extends AbstractType
             array(
                 'data_class' => User::class,
                 'allow_extra_fields' => true,
-                'validation_groups' => ['Default', 'Registration']
+                'validation_groups' => ['Default', 'ChangePassword']
             )
         );
     }

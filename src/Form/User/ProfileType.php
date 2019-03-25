@@ -31,7 +31,7 @@ class ProfileType extends AbstractType
             array(
                 'data_class' => User::class,
                 'allow_extra_fields' => true,
-                'validation_groups' => ['Default', 'Profile'],
+                'validation_groups' => ['Default', 'Profile']
             )
         );
     }
