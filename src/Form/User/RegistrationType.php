@@ -2,6 +2,7 @@
 
 namespace App\Form\User;
 
+use App\Constant\ApiDoc\Example;
 use App\Entity\User\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,7 +17,11 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email')
+            ->add('email', null, [
+                'documentation' => [
+                    'example' => Example::EMAIL
+                ]
+            ])
             ->add('firstName')
             ->add('lastName')
             ->add('middleName')

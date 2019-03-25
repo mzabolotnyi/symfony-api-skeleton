@@ -13,7 +13,9 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Swagger\Annotations as SWG;
+use App\Constant\ApiDoc\Example;
+use App\Constant\ApiDoc\Tag;
 
 /**
  * @Route("/restore-password")
@@ -43,6 +45,25 @@ class RestorePasswordController extends RestController
     /**
      * @Route("/request", methods={"POST"})
      *
+     * @SWG\Post(summary="Create request for restore password",
+     *     @SWG\Response(
+     *          response=Response::HTTP_NO_CONTENT,
+     *          description="OK"
+     *     ),
+     *      @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          type="string",
+     *          required=true,
+     *          @SWG\Definition(
+     *              required={"email"},
+     *              @SWG\Property(property="email", example=Example::EMAIL, type="string", description="Account linked email")
+     *          )
+     *      )
+     * )
+     *
+     * @SWG\Tag(name=Tag::USER_RESTORE_PASSWORD)
+     *
      * @param Request $request
      *
      * @return Response
@@ -70,6 +91,26 @@ class RestorePasswordController extends RestController
 
     /**
      * @Route("/reset", methods={"POST"})
+     *
+     * @SWG\Post(summary="Reset password by token",
+     *     @SWG\Response(
+     *          response=Response::HTTP_NO_CONTENT,
+     *          description="OK"
+     *     ),
+     *      @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          type="string",
+     *          required=true,
+     *          @SWG\Definition(
+     *              required={"token"},
+     *              @SWG\Property(property="token", example=Example::CONFIRMATION_TOKEN, type="string", description="Confirmation token"),
+     *              @SWG\Property(property="plainPassword", example=Example::PASSWORD, type="string", description="New password")
+     *          )
+     *      )
+     * )
+     *
+     * @SWG\Tag(name=Tag::USER_RESTORE_PASSWORD)
      *
      * @param Request $request
      *

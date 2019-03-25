@@ -132,6 +132,7 @@ class User extends BaseUser
      * @Serializer\Groups(Group::DETAIL)
      * @Serializer\VirtualProperty()
      * @Serializer\SerializedName("roles")
+     * @Serializer\Type("array<string>")
      */
     public function getRolesVirtual()
     {

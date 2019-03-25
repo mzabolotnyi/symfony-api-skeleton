@@ -11,9 +11,13 @@ use App\Form\User\RegistrationType;
 use App\Service\Notification\Mailer;
 use FOS\UserBundle\Model\UserManagerInterface;
 use FOS\UserBundle\Util\TokenGeneratorInterface;
+use Nelmio\ApiDocBundle\Annotation\Model;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Swagger\Annotations as SWG;
+use App\Constant\ApiDoc\Example;
+use App\Constant\ApiDoc\Tag;
 
 /**
  * @Route("/registration")
@@ -38,6 +42,23 @@ class RegistrationController extends RestController
 
     /**
      * @Route("", methods={"POST"})
+     *
+     * @SWG\Post(summary="Register new user by email",
+     *     @SWG\Response(
+     *          response=Response::HTTP_OK,
+     *          description="OK",
+     *          @Model(type=User::class, groups=Group::LIST_DETAIL)
+     *     ),
+     *      @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          type="string",
+     *          required=true,
+     *          @Model(type=RegistrationType::class)
+     *      )
+     * )
+     *
+     * @SWG\Tag(name=Tag::USER_REGISTRATION)
      *
      * @param Request $request
      *
@@ -66,6 +87,25 @@ class RegistrationController extends RestController
     /**
      * @Route("/confirm", methods={"POST"})
      *
+     * @SWG\Post(summary="Confirm user registration",
+     *     @SWG\Response(
+     *          response=Response::HTTP_NO_CONTENT,
+     *          description="OK"
+     *     ),
+     *      @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          type="string",
+     *          required=true,
+     *          @SWG\Definition(
+     *              required={"token"},
+     *              @SWG\Property(property="token", example=Example::CONFIRMATION_TOKEN, type="string", description="Confirmation token")
+     *          )
+     *      )
+     * )
+     *
+     * @SWG\Tag(name=Tag::USER_REGISTRATION)
+     *
      * @param Request $request
      *
      * @return Response
@@ -91,6 +131,25 @@ class RegistrationController extends RestController
 
     /**
      * @Route("/confirmation-email", methods={"POST"})
+     *
+     * @SWG\Post(summary="Resend confirmation email",
+     *     @SWG\Response(
+     *          response=Response::HTTP_NO_CONTENT,
+     *          description="OK"
+     *     ),
+     *      @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          type="string",
+     *          required=true,
+     *          @SWG\Definition(
+     *              required={"email"},
+     *              @SWG\Property(property="email", example=Example::EMAIL, type="string", description="Account linked email")
+     *          )
+     *      )
+     * )
+     *
+     * @SWG\Tag(name=Tag::USER_REGISTRATION)
      *
      * @param Request $request
      *

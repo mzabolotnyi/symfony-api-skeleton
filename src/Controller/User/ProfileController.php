@@ -4,12 +4,16 @@ namespace App\Controller\User;
 
 use App\Constant\Serialization\Group;
 use App\Controller\RestController;
+use App\Entity\User\User;
 use App\Form\User\ChangePasswordType;
 use App\Form\User\ProfileType;
 use FOS\UserBundle\Model\UserManagerInterface;
+use Nelmio\ApiDocBundle\Annotation\Model;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Swagger\Annotations as SWG;
+use App\Constant\ApiDoc\Tag;
 
 /**
  * @Route("/profile")
@@ -27,6 +31,16 @@ class ProfileController extends RestController
     /**
      * @Route("", methods={"GET"})
      *
+     * @SWG\Get(summary="Get profile of current authorized user",
+     *     @SWG\Response(
+     *          response=Response::HTTP_OK,
+     *          description="OK",
+     *          @Model(type=User::class, groups=Group::LIST_DETAIL)
+     *     )
+     * )
+     *
+     * @SWG\Tag(name=Tag::USER_PROFILE)
+     *
      * @return Response
      */
     public function getProfile()
@@ -36,6 +50,23 @@ class ProfileController extends RestController
 
     /**
      * @Route("", methods={"PUT"})
+     *
+     * @SWG\Put(summary="Update profile of current authorized user",
+     *     @SWG\Response(
+     *          response=Response::HTTP_OK,
+     *          description="OK",
+     *          @Model(type=User::class, groups=Group::LIST_DETAIL)
+     *     ),
+     *      @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          type="string",
+     *          required=true,
+     *          @Model(type=ProfileType::class)
+     *      )
+     * )
+     *
+     * @SWG\Tag(name=Tag::USER_PROFILE)
      *
      * @param Request $request
      *
@@ -47,7 +78,24 @@ class ProfileController extends RestController
     }
 
     /**
-     * @Route("/change-password", methods={"PUT"})
+     * @Route("/password", methods={"PUT"})
+     *
+     * @SWG\Put(summary="Change password of current authorized user",
+     *     @SWG\Response(
+     *          response=Response::HTTP_OK,
+     *          description="OK",
+     *          @Model(type=User::class, groups=Group::LIST_DETAIL)
+     *     ),
+     *      @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          type="string",
+     *          required=true,
+     *          @Model(type=ChangePasswordType::class)
+     *      )
+     * )
+     *
+     * @SWG\Tag(name=Tag::USER_PROFILE)
      *
      * @param Request $request
      *

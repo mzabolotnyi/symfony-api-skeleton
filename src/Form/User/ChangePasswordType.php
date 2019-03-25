@@ -21,9 +21,16 @@ class ChangePasswordType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new UserPassword()
+                ],
+                'documentation' => [
+                    'description' => 'Current password'
                 ]
             ])
-            ->add('plainPassword');
+            ->add('plainPassword', null, [
+                'documentation' => [
+                    'description' => 'New password'
+                ]
+            ]);
     }
 
     /**
