@@ -46,6 +46,17 @@ class Mailer
         $this->send($user->getEmailCanonical(), $subject, $rendered);
     }
 
+    public function sendRestorePasswordMessage(User $user)
+    {
+        $template = 'email/user/restore-password.html.twig';
+        $subject = $this->renderSubject($template);
+        $rendered = $this->twig->render($template, [
+            'user' => $user,
+        ]);
+
+        $this->send($user->getEmailCanonical(), $subject, $rendered);
+    }
+
     private function renderSubject($templateName, $context = [])
     {
         return $this->twig->load($templateName)->renderBlock('subject', $context);

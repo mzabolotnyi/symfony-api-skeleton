@@ -5,6 +5,8 @@ fos_user:
     from_email:
         address: noreply@example.com
         sender_name: App
+    resetting:
+        token_ttl: 1800
 
 fos_oauth_server:
     db_driver: orm
