@@ -21,6 +21,8 @@ use App\Constant\ApiDoc\Tag;
 
 /**
  * @Route("/registration")
+ *
+ * @SWG\Tag(name=Tag::USER_REGISTRATION)
  */
 class RegistrationController extends RestController
 {
@@ -57,8 +59,6 @@ class RegistrationController extends RestController
      *          @Model(type=RegistrationType::class)
      *      )
      * )
-     *
-     * @SWG\Tag(name=Tag::USER_REGISTRATION)
      *
      * @param Request $request
      *
@@ -104,8 +104,6 @@ class RegistrationController extends RestController
      *      )
      * )
      *
-     * @SWG\Tag(name=Tag::USER_REGISTRATION)
-     *
      * @param Request $request
      *
      * @return Response
@@ -148,8 +146,6 @@ class RegistrationController extends RestController
      *          )
      *      )
      * )
-     *
-     * @SWG\Tag(name=Tag::USER_REGISTRATION)
      *
      * @param Request $request
      *

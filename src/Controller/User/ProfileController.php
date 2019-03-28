@@ -17,6 +17,8 @@ use App\Constant\ApiDoc\Tag;
 
 /**
  * @Route("/profile")
+ *
+ * @SWG\Tag(name=Tag::USER_PROFILE)
  */
 class ProfileController extends RestController
 {
@@ -38,8 +40,6 @@ class ProfileController extends RestController
      *          @Model(type=User::class, groups=Group::LIST_DETAIL)
      *     )
      * )
-     *
-     * @SWG\Tag(name=Tag::USER_PROFILE)
      *
      * @return Response
      */
@@ -65,8 +65,6 @@ class ProfileController extends RestController
      *          @Model(type=ProfileType::class)
      *      )
      * )
-     *
-     * @SWG\Tag(name=Tag::USER_PROFILE)
      *
      * @param Request $request
      *
@@ -94,8 +92,6 @@ class ProfileController extends RestController
      *          @Model(type=ChangePasswordType::class)
      *      )
      * )
-     *
-     * @SWG\Tag(name=Tag::USER_PROFILE)
      *
      * @param Request $request
      *

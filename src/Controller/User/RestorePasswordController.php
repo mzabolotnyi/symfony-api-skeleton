@@ -19,6 +19,8 @@ use App\Constant\ApiDoc\Tag;
 
 /**
  * @Route("/restore-password")
+ *
+ * @SWG\Tag(name=Tag::USER_RESTORE_PASSWORD)
  */
 class RestorePasswordController extends RestController
 {
@@ -61,8 +63,6 @@ class RestorePasswordController extends RestController
      *          )
      *      )
      * )
-     *
-     * @SWG\Tag(name=Tag::USER_RESTORE_PASSWORD)
      *
      * @param Request $request
      *
@@ -109,8 +109,6 @@ class RestorePasswordController extends RestController
      *          )
      *      )
      * )
-     *
-     * @SWG\Tag(name=Tag::USER_RESTORE_PASSWORD)
      *
      * @param Request $request
      *

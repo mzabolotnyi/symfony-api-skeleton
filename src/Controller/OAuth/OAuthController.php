@@ -13,6 +13,8 @@ use App\Constant\ApiDoc\Tag;
 
 /**
  * @Route("/oauth")
+ *
+ * @SWG\Tag(name=Tag::USER_AUTHORIZATION)
  */
 class OAuthController extends RestController
 {
@@ -39,8 +41,6 @@ class OAuthController extends RestController
      *          )
      *      )
      * )
-     *
-     * @SWG\Tag(name=Tag::USER_AUTHORIZATION)
      *
      * @param OAuth2 $server
      * @param Request $request
