@@ -11,7 +11,7 @@ trait UuidableEntity
     /**
      * @var string
      * @ORM\Column(type="string", length=36, nullable=false, unique=true)
-     * @Serializer\Groups(Group::DEFAULT)
+     * @Serializer\Groups(Group::LIST)
      */
     protected $uuid;
 

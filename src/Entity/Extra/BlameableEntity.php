@@ -11,7 +11,7 @@ trait BlameableEntity
      * @var string
      *
      * @Gedmo\Blameable(on="create")
-     * @ORM\Column(type="string", length=36, nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $createdBy;
 
@@ -19,7 +19,7 @@ trait BlameableEntity
      * @var string
      *
      * @Gedmo\Blameable(on="update")
-     * @ORM\Column(type="string", length=36, nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $updatedBy;
 

@@ -34,10 +34,6 @@ abstract class RestController extends AbstractFOSRestController
             $groups = [$groups];
         }
 
-        if ($groups === null || !\in_array(Group::DEFAULT, $groups)) {
-            $groups[] = Group::DEFAULT;
-        }
-
         $view = $this->view($data, $code, $headers);
 
         if (!empty($groups)) {

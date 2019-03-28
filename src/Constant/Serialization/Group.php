@@ -12,6 +12,6 @@ class Group extends BaseConstant
     const DETAIL = 'DETAIL';
     const EXTRA = 'EXTRA';
 
-    const LIST_DETAIL = [self::DEFAULT, self::LIST, self::DETAIL];
-    const ALL = [self::DEFAULT, self::LIST, self::DETAIL, self::EXTRA];
+    const LIST_DETAIL = [self::LIST, self::DETAIL];
+    const ALL = [self::LIST, self::DETAIL, self::EXTRA];
 }

@@ -2,6 +2,7 @@
 
 namespace App\Entity\Extra;
 
+use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
 abstract class BaseEntity
