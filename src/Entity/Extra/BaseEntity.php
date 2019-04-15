@@ -32,12 +32,8 @@ abstract class BaseEntity
         return $this->id;
     }
 
-    /**
-     * @return bool
-     */
-    public function isNew()
+    public function isNew(): bool
     {
         return null === $this->getId();
     }
-
 }

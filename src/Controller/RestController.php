@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Constant\Serialization\Group;
 use FOS\RestBundle\Context\Context;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use Symfony\Component\Form\FormInterface;

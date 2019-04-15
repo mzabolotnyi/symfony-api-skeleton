@@ -6,8 +6,6 @@ use App\Constant\BaseConstant;
 
 class Group extends BaseConstant
 {
-    const DEFAULT = 'DEFAULT';
-
     const LIST = 'LIST';
     const DETAIL = 'DETAIL';
     const EXTRA = 'EXTRA';

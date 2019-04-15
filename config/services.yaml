@@ -56,6 +56,13 @@ services:
         arguments:
             - '@jms_serializer.camel_case_naming_strategy'
 
+    # Symfony Maker
+    Symfony\Bundle\MakerBundle\Doctrine\DoctrineHelper:
+        public: true
+        arguments:
+            $entityNamespace: App\Entity
+            $registry: '@doctrine'
+
     # App Listeners
     App\EventListener\Kernel\LocaleListener:
         tags:
