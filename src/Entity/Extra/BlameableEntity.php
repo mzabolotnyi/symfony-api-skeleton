@@ -24,39 +24,13 @@ trait BlameableEntity
     protected $updatedBy;
 
     /**
-     * Sets createdBy.
-     *
-     * @param string|null $createdBy
-     * @return $this
-     */
-    public function setCreatedBy(?string $createdBy): self
-    {
-        $this->createdBy = $createdBy;
-
-        return $this;
-    }
-
-    /**
      * Returns createdBy.
      *
      * @return string|null
      */
-    public function getCreatedBy()
+    public function getCreatedBy(): ?string
     {
         return $this->createdBy;
-    }
-
-    /**
-     * Sets updatedBy.
-     *
-     * @param string|null $updatedBy
-     * @return $this
-     */
-    public function setUpdatedBy(?string $updatedBy): self
-    {
-        $this->updatedBy = $updatedBy;
-
-        return $this;
     }
 
     /**
@@ -64,7 +38,7 @@ trait BlameableEntity
      *
      * @return string|null
      */
-    public function getUpdatedBy()
+    public function getUpdatedBy(): ?string
     {
         return $this->updatedBy;
     }

@@ -24,39 +24,13 @@ trait TimestampableEntity
     protected $updatedAt;
 
     /**
-     * Sets createdAt.
-     *
-     * @param \DateTime $createdAt
-     * @return $this
-     */
-    public function setCreatedAt(?\DateTime $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
      * Returns createdAt.
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
-    }
-
-    /**
-     * Sets updatedAt.
-     *
-     * @param \DateTime $updatedAt
-     * @return $this
-     */
-    public function setUpdatedAt(?\DateTime $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
     }
 
     /**
@@ -64,7 +38,7 @@ trait TimestampableEntity
      *
      * @return \DateTime
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
