@@ -156,9 +156,4 @@ class <?= $class_name ?> extends RestController
     {
         return $this->getDoctrine()->getRepository(<?= $entity_class_name ?>::class);
     }
-
-    private function getEm()
-    {
-        return $this->getDoctrine()->getManager();
-    }
 }

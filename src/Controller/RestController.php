@@ -23,7 +23,7 @@ abstract class RestController extends AbstractFOSRestController
      * @param int $code
      * @return Response
      */
-    public function response($data = null, $groups = null, int $code = null, array $headers = [])
+    protected function response($data = null, $groups = null, int $code = null, array $headers = [])
     {
         if ($data instanceof FormInterface) {
             return $this->handleFormError($data);
@@ -43,6 +43,12 @@ abstract class RestController extends AbstractFOSRestController
 
         return $this->handleView($view);
     }
+
+    protected function getEm()
+    {
+        return $this->getDoctrine()->getManager();
+    }
+
 
     private function handleFormError(FormInterface $form)
     {

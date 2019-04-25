@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Clear var files
-rm -rf var/cache/dev var/cache/prod var/cache/test
+rm -rf var/cache/*
 rm -rf var/logs/dev.log var/logs/prod.log var/logs/test.log
 echo -e "Clearing var files was successfully done."
 
