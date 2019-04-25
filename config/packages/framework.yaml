@@ -1,6 +1,5 @@
 framework:
     secret: '%env(APP_SECRET)%'
-    default_locale: '%env(APP_LOCALE)%'
     csrf_protection: false
 
     # Enables session support. Note that the session will ONLY be started if you read or write from it.
