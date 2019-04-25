@@ -30,7 +30,7 @@ class ErrorResponseHandler
     {
         $data = $this->prepareErrorData($alias, $message, $details);
 
-        return $this->response($data, $code);
+        return new JsonResponse($data, $code);
     }
 
     public function handleInternalError($message)
@@ -112,11 +112,6 @@ class ErrorResponseHandler
         }
 
         return $this->handleError($alias, $message, $code);
-    }
-
-    private function response($data, $code)
-    {
-        return new JsonResponse($data, $code);
     }
 
     private function prepareErrorData($alias, $message, $details = [])
