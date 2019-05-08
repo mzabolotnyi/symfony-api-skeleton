@@ -1,6 +1,6 @@
 <?php
 
-namespace App\EventListener\Kernel;
+namespace App\EventSubscriber\Kernel;
 
 use App\Exception\BadRequestHttpException;
 use App\Exception\DataConflictException;
@@ -11,12 +11,14 @@ use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use OAuth2\OAuth2ServerException;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\KernelEvents;
 
-class ExceptionListener
+class ExceptionSubscriber implements EventSubscriberInterface
 {
     /** @var LoggerInterface */
     private $logger;
@@ -30,7 +32,16 @@ class ExceptionListener
         $this->logger = $logger;
     }
 
-    public function onKernelException(GetResponseForExceptionEvent $event)
+    public static function getSubscribedEvents()
+    {
+        return [
+            KernelEvents::EXCEPTION => [
+                ['handleException']
+            ],
+        ];
+    }
+
+    public function handleException(GetResponseForExceptionEvent $event)
     {
         $exception = $event->getException();
 

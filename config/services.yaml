@@ -41,6 +41,12 @@ services:
         calls:
             - [ setAnnotationReader, [ '@annotation_reader' ] ]
 
+    Gedmo\Loggable\LoggableListener:
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        calls:
+            - [ setAnnotationReader, [ '@annotation_reader' ] ]
+
     # FOS OAuth
     FOS\OAuthServerBundle\Storage\OAuthStorage:
         public: true
@@ -63,17 +69,11 @@ services:
             $entityNamespace: App\Entity
             $registry: '@doctrine'
 
-    # App Listeners
-    App\EventListener\Kernel\LocaleListener:
-        tags:
-            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: -1 }
-
-    App\EventListener\Kernel\ExceptionListener:
-        tags:
-            - { name: kernel.event_listener, event: kernel.exception }
-            - { name: monolog.logger, channel: uncaught_exceptions }
-
     # App Services
     App\Service\Notification\Mailer:
         tags:
             - { name: monolog.logger, channel: mailer }
+
+    App\EventSubscriber\Kernel\ExceptionSubscriber:
+        tags:
+            - { name: monolog.logger, channel: uncaught_exceptions }
