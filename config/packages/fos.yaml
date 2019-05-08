@@ -3,8 +3,8 @@ fos_user:
     user_class: App\Entity\User\User
     firewall_name: api
     from_email:
-        address: noreply@example.com
-        sender_name: App
+        address: '%env(MAILER_FROM_EMAIL)%'
+        sender_name: '%env(MAILER_FROM_NAME)%'
     resetting:
         token_ttl: 1800
 
