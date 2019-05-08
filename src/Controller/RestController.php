@@ -59,7 +59,7 @@ abstract class RestController extends AbstractFOSRestController
 
     private function getFormErrors(FormInterface $form)
     {
-        $errors = array();
+        $errors = [];
 
         foreach ($form->getErrors() as $error) {
             $errors[] = $error->getMessage();
