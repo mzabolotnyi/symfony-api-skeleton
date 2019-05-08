@@ -6,8 +6,6 @@ use App\Constant\BaseConstant;
 
 class Tag extends BaseConstant
 {
-    const UNDEFINED = 'undefined';
-
     const USER_REGISTRATION = 'User Registration';
     const USER_PROFILE = 'User Profile';
     const USER_RESTORE_PASSWORD = 'User Restore Password';

@@ -2,13 +2,11 @@
 
 namespace App\Controller;
 
-use App\Constant\ApiDoc\Tag;
 use App\Constant\Serialization\Group;
 use Symfony\Component\HttpFoundation\Request;
 
 abstract class CrudController extends RestController
 {
-    const API_DOC_TAG = Tag::UNDEFINED;
     const SERIALIZE_GROUP_LIST = Group::LIST;
     const SERIALIZE_GROUP_DETAIL = Group::LIST_DETAIL;
 
