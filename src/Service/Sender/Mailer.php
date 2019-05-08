@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\Notification;
+namespace App\Service\Sender;
 
 use App\Entity\User\User;
 use Psr\Log\LoggerInterface;
@@ -20,19 +20,11 @@ class Mailer
     /** @var LoggerInterface */
     private $logger;
 
-    /** @var string */
-    private $fromEmail;
-
-    /** @var string */
-    private $fromName;
-
     public function __construct(\Swift_Mailer $mailer, Environment $twig, LoggerInterface $logger)
     {
         $this->mailer = $mailer;
         $this->twig = $twig;
         $this->logger = $logger;
-        $this->fromEmail = getenv('MAILER_FROM_EMAIL');
-        $this->fromName = getenv('MAILER_FROM_NAME');
     }
 
     public function sendConfirmationEmailMessage(User $user)
@@ -79,7 +71,7 @@ class Mailer
             }
 
             $message = new \Swift_Message($subject, $body, $contentType);
-            $message->setFrom($this->fromEmail, $this->fromName)
+            $message->setFrom(getenv('MAILER_FROM_EMAIL'), getenv('MAILER_FROM_NAME'))
                 ->setTo($receivers);;
 
             $this->mailer->send($message);

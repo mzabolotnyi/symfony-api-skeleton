@@ -18,8 +18,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ExceptionListener
 {
-    private $appEnv;
-
     /** @var LoggerInterface */
     private $logger;
 
@@ -30,7 +28,6 @@ class ExceptionListener
     {
         $this->responseHandler = $responseHandler;
         $this->logger = $logger;
-        $this->appEnv = getenv('APP_ENV');
     }
 
     public function onKernelException(GetResponseForExceptionEvent $event)
@@ -58,7 +55,7 @@ class ExceptionListener
             $response = $this->responseHandler->handleBadRequestError($exception->getMessage());
         } else {
             $message = $this->generateErrorMessage($exception);
-            $publicMessage = $this->appEnv === 'dev' ? $message : 'Internal error';
+            $publicMessage = getenv('APP_ENV') === 'dev' ? $message : 'Internal error';
             $response = $this->responseHandler->handleInternalError($publicMessage);
             $this->logger->error($message, ['exception' => $exception]);
         }

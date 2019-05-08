@@ -25,7 +25,7 @@ class ErrorResponseHandler
         $this->translator = $translator;
     }
 
-    public function handleError($alias, $message = '', $code = JsonResponse::HTTP_BAD_REQUEST, $details = [])
+    public function handleError($alias, $message = '', $code = Response::HTTP_BAD_REQUEST, $details = [])
     {
         $data = $this->prepareErrorData($alias, $message, $details);
 

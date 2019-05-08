@@ -61,7 +61,7 @@ class OAuth2 extends \OAuth2\OAuth2
         $user = $stored['data'];
 
         if ($user->needConfirmEmail()) {
-            throw new OAuth2ServerException(Response::HTTP_BAD_REQUEST, self::ERROR_UNCONFIRMED_EMAIL, "Need confirm email");
+            throw new OAuth2ServerException(Response::HTTP_BAD_REQUEST, self::ERROR_UNCONFIRMED_EMAIL, 'Need confirm email');
         }
 
         return $stored;

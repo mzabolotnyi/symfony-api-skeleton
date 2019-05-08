@@ -6,7 +6,7 @@ use App\Controller\RestController;
 use App\Entity\User\User;
 use App\Exception\NotFoundException;
 use App\Form\User\ResetPasswordType;
-use App\Service\Notification\Mailer;
+use App\Service\Sender\Mailer;
 use FOS\UserBundle\Model\UserManagerInterface;
 use FOS\UserBundle\Util\TokenGeneratorInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
