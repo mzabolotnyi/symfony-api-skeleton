@@ -13,12 +13,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Swagger\Annotations as SWG;
-use App\Constant\ApiDoc\Tag;
 
 /**
  * @Route("/profile")
  *
- * @SWG\Tag(name=Tag::USER_PROFILE)
+ * @SWG\Tag(name="User Profile")
  */
 class ProfileController extends RestController
 {

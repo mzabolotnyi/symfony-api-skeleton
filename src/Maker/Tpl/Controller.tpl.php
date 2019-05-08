@@ -7,6 +7,7 @@ use <?= $form_full_class_name ?>;
 <?php if (isset($repository_full_class_name)): ?>
 use <?= $repository_full_class_name ?>;
 <?php endif ?>
+use App\Controller\RestController;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,16 +22,17 @@ use App\Constant\Serialization\Group;
  */
 class <?= $class_name ?> extends RestController
 {
-    const SERIALIZE_GROUP_LIST = Group::LIST;
-    const SERIALIZE_GROUP_DETAIL = Group::LIST_DETAIL;
-
     /**
      * @Route("", methods={"GET"})
      *
      * @SWG\Get(summary="Get list",
      *     @SWG\Response(
      *          response=Response::HTTP_OK,
-     *          description="OK"
+     *          description="OK",
+     *          @SWG\Schema(
+     *              type="array",
+     *              @SWG\Items(ref=@Model(type=<?= $entity_class_name ?>::class, groups={Group::LIST}))
+     *          )
      *     ),
      *     @SWG\Parameter(
      *          name="pagination[limit]",
@@ -45,13 +47,13 @@ class <?= $class_name ?> extends RestController
      *          required=false
      *     ),
      *     @SWG\Parameter(
-     *          name="filter[name]",
+     *          name="filters[name]",
      *          in="query",
      *          type="string",
      *          required=false
      *     ),
      *      @SWG\Parameter(
-     *          name="order[name]",
+     *          name="orders[name]",
      *          in="query",
      *          type="string",
      *          required=false,
@@ -64,7 +66,7 @@ class <?= $class_name ?> extends RestController
      */
     public function getList(Request $request)
     {
-        return $this->response($this->getRepository()->findAll(), self::SERIALIZE_GROUP_LIST);
+        return $this->response($this->getRepository()->findByParams($request->query->all()), Group::LIST);
     }
 
     /**
@@ -74,7 +76,7 @@ class <?= $class_name ?> extends RestController
      *     @SWG\Response(
      *          response=Response::HTTP_OK,
      *          description="OK",
-     *          @Model(type=Mock::class, groups=Group::LIST_DETAIL)
+     *          @Model(type=<?= $entity_class_name ?>::class, groups=Group::LIST_DETAIL)
      *     )
      * )
      *
@@ -84,12 +86,26 @@ class <?= $class_name ?> extends RestController
     */
     public function getOne(<?= $entity_class_name ?> $<?= $entity_var_singular ?>)
     {
-        return $this->response($<?= $entity_var_singular ?>, self::SERIALIZE_GROUP_DETAIL);
+        return $this->response($<?= $entity_var_singular ?>, Group::LIST_DETAIL);
     }
 
     /**
      * @Route("", methods={"POST"})
      *
+     * @SWG\Post(summary="Create",
+     *     @SWG\Response(
+     *          response=Response::HTTP_OK,
+     *          description="OK",
+     *          @Model(type=<?= $entity_class_name ?>::class, groups=Group::LIST_DETAIL)
+     *     ),
+     *      @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          type="string",
+     *          required=true,
+     *          @Model(type=<?= $form_class_name ?>::class)
+     *      )
+     * )
      *
      * @param Request $request
      * @return Response
@@ -101,6 +117,21 @@ class <?= $class_name ?> extends RestController
 
     /**
      * @Route("/{uuid}", methods={"PUT"})
+     *
+     * @SWG\Put(summary="Update",
+     *     @SWG\Response(
+     *          response=Response::HTTP_OK,
+     *          description="OK",
+     *          @Model(type=<?= $entity_class_name ?>::class, groups=Group::LIST_DETAIL)
+     *     ),
+     *      @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          type="string",
+     *          required=true,
+     *          @Model(type=<?= $form_class_name ?>::class)
+     *      )
+     * )
      *
      * @param Request $request
      * @param <?= $entity_class_name ?> $<?= $entity_var_singular ?>
@@ -114,6 +145,13 @@ class <?= $class_name ?> extends RestController
 
     /**
      * @Route("/{uuid}", methods={"DELETE"})
+     *
+     * @SWG\Delete(summary="Delete",
+     *     @SWG\Response(
+     *          response=Response::HTTP_NO_CONTENT,
+     *          description="OK"
+     *     )
+     * )
      *
      * @param <?= $entity_class_name ?> $<?= $entity_var_singular ?>
 
@@ -142,7 +180,7 @@ class <?= $class_name ?> extends RestController
 
         $this->getEm()->flush();
 
-        return $this->response($<?= $entity_var_singular ?>, self::SERIALIZE_GROUP_DETAIL);
+        return $this->response($<?= $entity_var_singular ?>, Group::LIST_DETAIL);
     }
 
     /**

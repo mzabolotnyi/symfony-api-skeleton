@@ -17,12 +17,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Swagger\Annotations as SWG;
 use App\Constant\ApiDoc\Example;
-use App\Constant\ApiDoc\Tag;
 
 /**
  * @Route("/registration")
  *
- * @SWG\Tag(name=Tag::USER_REGISTRATION)
+ * @SWG\Tag(name="User Registration")
  */
 class RegistrationController extends RestController
 {

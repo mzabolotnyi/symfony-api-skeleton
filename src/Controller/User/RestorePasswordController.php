@@ -15,12 +15,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Swagger\Annotations as SWG;
 use App\Constant\ApiDoc\Example;
-use App\Constant\ApiDoc\Tag;
 
 /**
  * @Route("/restore-password")
  *
- * @SWG\Tag(name=Tag::USER_RESTORE_PASSWORD)
+ * @SWG\Tag(name="User Restore Password")
  */
 class RestorePasswordController extends RestController
 {

@@ -9,12 +9,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Swagger\Annotations as SWG;
 use App\Constant\ApiDoc\Example;
-use App\Constant\ApiDoc\Tag;
 
 /**
  * @Route("/oauth")
  *
- * @SWG\Tag(name=Tag::USER_AUTHORIZATION)
+ * @SWG\Tag(name="User Authorization")
  */
 class OAuthController extends RestController
 {

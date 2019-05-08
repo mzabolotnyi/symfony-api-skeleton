@@ -139,6 +139,11 @@ class User extends BaseUser
         return $this->getRoles();
     }
 
+    public function isNew(): bool
+    {
+        return null === $this->getId();
+    }
+
     public function setEmail($email)
     {
         $email = is_null($email) ? '' : $email;
