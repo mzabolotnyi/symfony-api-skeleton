@@ -3,5 +3,6 @@ nelmio_cors:
         origin_regex: true
         allow_origin: ['%env(CORS_ALLOW_ORIGIN)%']
         allow_methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
-        allow_headers: ['Content-Type', 'Authorization']
+        allow_headers: ['Content-Type', 'Authorization', 'Locale']
+        expose_headers: ['Pagination-Count', 'Pagination-Limit', 'Pagination-Page']
         max_age: 3600
