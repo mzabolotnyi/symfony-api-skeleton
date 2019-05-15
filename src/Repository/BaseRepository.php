@@ -43,7 +43,7 @@ abstract class BaseRepository extends ServiceEntityRepository
     /**
      * @param array $filters
      *
-     * @return array
+     * @return int
      */
     public function getCount(?array $filters): int
     {
@@ -99,7 +99,7 @@ abstract class BaseRepository extends ServiceEntityRepository
     protected function applyOrder(array $order, QueryBuilder $qb, string $alias, string $className): void
     {
         $metadata = $this->getEntityManager()->getClassMetadata($className);
-        $columns = $metadata->getColumnNames();
+        $columns = $metadata->getFieldNames();
         $relationColumns = $metadata->getAssociationMappings();
         foreach ($order as $field => $value) {
             $column = $alias . '.' . $field;
@@ -126,7 +126,7 @@ abstract class BaseRepository extends ServiceEntityRepository
     protected function applyFilters(iterable $filters, QueryBuilder $qb, string $alias, string $className): void
     {
         $metadata = $this->getEntityManager()->getClassMetadata($className);
-        $columns = $metadata->getColumnNames();
+        $columns = $metadata->getFieldNames();
         $relationColumns = $metadata->getAssociationMappings();
 
         foreach ($filters as $field => $value) {
