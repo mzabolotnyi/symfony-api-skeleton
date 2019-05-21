@@ -4,6 +4,7 @@ error:
         user: Пользователь не найден
     bad_request:
         common: Ошибка при выполнении запроса
+        failed_to_upload_file: Файл не загружен или его размер превышает допустимый
     data_conflict:
         common: Конфликт данных
     forbidden:

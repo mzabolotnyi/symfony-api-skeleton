@@ -34,7 +34,6 @@ use App\Constant\Serialization\Group;
  *      )
  * })
  * @ORM\Entity(repositoryClass="App\Repository\User\UserRepository")
- * @ORM\Table(name="user")
  * @Gedmo\Loggable
  */
 class User extends BaseUser
