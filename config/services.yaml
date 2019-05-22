@@ -77,3 +77,7 @@ services:
     App\EventSubscriber\Kernel\ExceptionSubscriber:
         tags:
             - { name: monolog.logger, channel: uncaught_exceptions }
+
+    App\EventListener\Serializer\SerializeMediaListener:
+        tags:
+            - { name: jms_serializer.event_listener, event: serializer.post_serialize, method: onPostSerialize, class: App\SonataMedia\Media }

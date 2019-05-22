@@ -32,6 +32,7 @@ security:
             pattern:   ^/api
             fos_oauth: true
             stateless: true
+            security: false #remove if need secured api
 
     access_control:
         - { path: ^/api,                           role: IS_AUTHENTICATED_FULLY }
