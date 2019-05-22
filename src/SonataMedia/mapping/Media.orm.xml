@@ -19,6 +19,7 @@
 
         <field name="hash" column="hash" type="string" nullable="true"/>
         <field name="originName" column="origin_name" type="string" nullable="true"/>
+        <field name="uuid" column="uuid" type="string" nullable="false" unique="true"/>
 
     </entity>
 </doctrine-mapping>

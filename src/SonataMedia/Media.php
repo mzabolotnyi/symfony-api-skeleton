@@ -2,6 +2,8 @@
 
 namespace App\SonataMedia;
 
+use App\Entity\Extra\UuidableEntity;
+use Ramsey\Uuid\Uuid;
 use Sonata\MediaBundle\Entity\BaseMedia;
 
 /**
@@ -14,6 +16,8 @@ use Sonata\MediaBundle\Entity\BaseMedia;
  */
 class Media extends BaseMedia
 {
+    use UuidableEntity;
+
     /**
      * @var integer
      */
@@ -28,6 +32,11 @@ class Media extends BaseMedia
      * @var string
      */
     private $originName;
+
+    public function __construct()
+    {
+        $this->uuid = Uuid::uuid4()->toString();
+    }
 
     public function getId()
     {

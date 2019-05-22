@@ -4,6 +4,7 @@ namespace App\Service\Media;
 
 use App\Exception\RuntimeException;
 use App\SonataMedia\Media;
+use Sonata\MediaBundle\Filesystem\Local;
 use Sonata\MediaBundle\Provider\MediaProviderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -51,14 +52,8 @@ class MediaManager
             $hash = md5($fileContent);
 
             $mimeType = $uploadedFile->getClientMimeType();
-            $providerName = self::PROVIDER_FILE;
-
-            if (\in_array($mimeType, $this->getImageMimeTypes())) {
-                $context = self::CONTEXT_IMAGE;
-                $providerName = self::PROVIDER_IMAGE;
-            } else {
-                $context = self::CONTEXT_DEFAULT;
-            }
+            $providerName = $this->detectProviderName($mimeType);
+            $context = $this->detectContext($mimeType);
 
             $media = $this->createMedia($tempPath, $hash, $context, $providerName, $uploadedFile->getClientOriginalName());
 
@@ -67,6 +62,30 @@ class MediaManager
         }
 
         return $media;
+    }
+
+    private function detectContext($mimeType)
+    {
+
+        if (\in_array($mimeType, $this->getImageMimeTypes())) {
+            $context = self::CONTEXT_IMAGE;
+        } else {
+            $context = self::CONTEXT_DEFAULT;
+        }
+
+        return $context;
+    }
+
+    private function detectProviderName($mimeType)
+    {
+
+        if (\in_array($mimeType, $this->getImageMimeTypes())) {
+            $providerName = self::PROVIDER_IMAGE;
+        } else {
+            $providerName = self::PROVIDER_FILE;
+        }
+
+        return $providerName;
     }
 
     private function getImageMimeTypes(): array
@@ -102,13 +121,10 @@ class MediaManager
         /** @var MediaProviderInterface $provider */
         $provider = $this->container->get($media->getProviderName());
 
-        $path = $this->container->getParameter('kernel.root_dir')
-            . DIRECTORY_SEPARATOR
-            . '..'
-            . DIRECTORY_SEPARATOR
-            . 'web'
-            . DIRECTORY_SEPARATOR
-            . 'uploads'
+        /** @var Local $adapter */
+        $adapter = $provider->getFilesystem()->getAdapter();
+
+        $path = $adapter->getDirectory()
             . DIRECTORY_SEPARATOR
             . $provider->generatePrivateUrl($media, MediaProviderInterface::FORMAT_REFERENCE);
 

@@ -25,8 +25,7 @@ class FileController extends RestController
      * @SWG\Post(summary="Create",
      *     @SWG\Response(
      *          response=Response::HTTP_OK,
-     *          description="OK",
-     *          @Model(type=Media::class, groups=Group::LIST_DETAIL)
+     *          description="OK"
      *     ),
      *     @SWG\Parameter(
      *          name="file",
@@ -54,24 +53,24 @@ class FileController extends RestController
         return $this->response($media, Group::LIST_DETAIL);
     }
 
-//    /**
-//     * @Route("/{uuid}", methods={"DELETE"})
-//     *
-//     * @SWG\Delete(summary="Delete",
-//     *     @SWG\Response(
-//     *          response=Response::HTTP_NO_CONTENT,
-//     *          description="OK"
-//     *     )
-//     * )
-//     *
-//     * @param File $file
-//     * @return Response
-//     */
-//    public function delete(File $file)
-//    {
-//        $this->getEm()->remove($file);
-//        $this->getEm()->flush();
-//
-//        return $this->response();
-//    }
+    /**
+     * @Route("/{uuid}", methods={"DELETE"})
+     *
+     * @SWG\Delete(summary="Delete",
+     *     @SWG\Response(
+     *          response=Response::HTTP_NO_CONTENT,
+     *          description="OK"
+     *     )
+     * )
+     *
+     * @param Media $media
+     * @return Response
+     */
+    public function delete(Media $media)
+    {
+        $this->getEm()->remove($media);
+        $this->getEm()->flush();
+
+        return $this->response();
+    }
 }

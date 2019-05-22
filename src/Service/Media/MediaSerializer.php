@@ -19,7 +19,7 @@ class MediaSerializer
     public function serialize(Media $media)
     {
         $result = [
-            'id' => $media->getId(),
+            'uuid' => $media->getUuid(),
             'href' => $this->getMediaHref($media),
             'originName' => $media->getOriginName() ?? $media->getName()
         ];
