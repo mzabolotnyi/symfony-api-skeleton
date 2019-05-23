@@ -1,7 +1,8 @@
 <?php
 
-namespace App\SonataMedia;
+namespace App\Entity\Media;
 
+use Doctrine\ORM\Mapping as ORM;
 use Sonata\MediaBundle\Entity\BaseGallery;
 
 /**
@@ -11,11 +12,16 @@ use Sonata\MediaBundle\Entity\BaseGallery;
  *
  * References:
  * @link http://www.doctrine-project.org/projects/orm/2.0/docs/reference/working-with-objects/en
+ *
+ * @ORM\Entity()
+ * @ORM\Table(name="sonata_gallery")
  */
 class Gallery extends BaseGallery
 {
     /**
-     * @var integer
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 

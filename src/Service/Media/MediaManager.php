@@ -3,7 +3,7 @@
 namespace App\Service\Media;
 
 use App\Exception\RuntimeException;
-use App\SonataMedia\Media;
+use App\Entity\Media\Media;
 use Sonata\MediaBundle\Filesystem\Local;
 use Sonata\MediaBundle\Provider\MediaProviderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;

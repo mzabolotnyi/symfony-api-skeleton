@@ -10,8 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Swagger\Annotations as SWG;
-use Nelmio\ApiDocBundle\Annotation\Model;
-use App\SonataMedia\Media;
+use App\Entity\Media\Media;
 
 /**
  * @Route("file")

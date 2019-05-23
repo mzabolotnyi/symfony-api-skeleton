@@ -33,10 +33,6 @@ doctrine:
                 prefix: Gedmo\Loggable\Entity
                 dir: '%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity'
             SonataMediaBundle: ~
-            SonataMedia:
-                type: xml
-                prefix: App\SonataMedia
-                dir: '%kernel.project_dir%/src/SonataMedia/mapping'
             AppEntity:
                 type: annotation
                 prefix: App\Entity

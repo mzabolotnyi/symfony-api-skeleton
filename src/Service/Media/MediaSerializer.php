@@ -2,7 +2,7 @@
 
 namespace App\Service\Media;
 
-use App\SonataMedia\Media;
+use App\Entity\Media\Media;
 use Sonata\MediaBundle\Provider\MediaProviderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 

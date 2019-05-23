@@ -2,8 +2,8 @@
 
 namespace App\EventListener\Serializer;
 
+use App\Entity\Media\Media;
 use App\Service\Media\MediaSerializer;
-use App\SonataMedia\Media;
 use JMS\Serializer\EventDispatcher\ObjectEvent;
 use JMS\Serializer\JsonSerializationVisitor;
 

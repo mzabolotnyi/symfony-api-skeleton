@@ -1,8 +1,9 @@
 <?php
 
-namespace App\SonataMedia;
+namespace App\Entity\Media;
 
 use App\Entity\Extra\UuidableEntity;
+use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Sonata\MediaBundle\Entity\BaseMedia;
 
@@ -13,23 +14,28 @@ use Sonata\MediaBundle\Entity\BaseMedia;
  *
  * References:
  * @link http://www.doctrine-project.org/projects/orm/2.0/docs/reference/working-with-objects/en
+ *
+ * @ORM\Entity
+ * @ORM\Table(name="sonata_media")
  */
 class Media extends BaseMedia
 {
     use UuidableEntity;
 
     /**
-     * @var integer
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
-     * @var string
+     * @ORM\Column(type="string", nullable=true)
      */
     private $hash;
 
     /**
-     * @var string
+     * @ORM\Column(type="string", nullable=true)
      */
     private $originName;
 
