@@ -14,5 +14,6 @@ class Operator extends BaseConstant
     const LESS_THAN_OR_EQUAL = 'LESS_THAN_OR_EQUAL';
     const GREAT_THAN = 'GREAT_THAN';
     const GREAT_THAN_OR_EQUAL = 'GREAT_THAN_OR_EQUAL';
+    const LIKE = 'LIKE';
     const IS_NULL = 'IS_NULL';
 }

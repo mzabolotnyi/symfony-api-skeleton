@@ -183,6 +183,9 @@ abstract class BaseRepository extends ServiceEntityRepository
                 case (Operator::GREAT_THAN_OR_EQUAL):
                     $this->gte($qb, $column, $value);
                     break;
+                case (Operator::LIKE):
+                    $this->like($qb, $column, $value);
+                    break;
                 case (Operator::IS_NULL):
                     $this->isnull($qb, $column, $value);
                     break;
@@ -262,6 +265,15 @@ abstract class BaseRepository extends ServiceEntityRepository
         return $this;
     }
 
+    private function like(QueryBuilder $qb, string $column, $value): self
+    {
+        $placeholder = $this->createPlaceholder($column);
+        $qb->andWhere($column . ' LIKE :' . $placeholder)
+            ->setParameter($placeholder, '%' . $value . '%');
+
+        return $this;
+    }
+
     private function isnull(QueryBuilder $qb, string $column, $value): self
     {
         $operator = $value ? 'IS NULL' : 'IS NOT NULL';
@@ -272,6 +284,6 @@ abstract class BaseRepository extends ServiceEntityRepository
 
     private function createPlaceholder(string $name): string
     {
-        return (str_replace('.', '_', $name) . ++$this->placeholderCounter);
+        return (str_replace('.', '_', $name) . '_' . ++$this->placeholderCounter);
     }
 }
