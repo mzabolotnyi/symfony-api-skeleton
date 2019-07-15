@@ -21,7 +21,7 @@ class FileController extends RestController
     /**
      * @Route("", methods={"POST"})
      *
-     * @SWG\Post(summary="Create",
+     * @SWG\Post(summary="Upload",
      *     @SWG\Response(
      *          response=Response::HTTP_OK,
      *          description="OK"
