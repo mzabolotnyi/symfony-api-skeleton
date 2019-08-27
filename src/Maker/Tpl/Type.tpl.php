@@ -14,8 +14,8 @@ class <?= $class_name ?> extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        <?php foreach ($form_fields as $form_field): ?>
-            >add('<?= $form_field ?>')
+        <?php foreach ($form_fields as $form_field => $form_options): ?>
+            ->add('<?= $form_field ?>')
         <?php endforeach; ?>
         ;
     }
