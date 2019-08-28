@@ -143,7 +143,7 @@ abstract class BaseRepository extends ServiceEntityRepository
                 continue;
             }
 
-            if (\is_array($value) && !empty($value) && \in_array(\key($value), Operator::getConstants())) {
+            if (\is_array($value) && !empty($value) && \in_array(\key($value), Operator::getConstants(), true)) {
                 foreach ($value as $operatorType => $operatorValue) {
                     $this->applyFilters([
                         $field => [
