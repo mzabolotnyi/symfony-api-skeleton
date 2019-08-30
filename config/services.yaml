@@ -70,7 +70,7 @@ services:
             $registry: '@doctrine'
 
     # App Services
-    App\Service\Notification\Mailer:
+    App\Service\Sender\Mailer:
         tags:
             - { name: monolog.logger, channel: mailer }
 
