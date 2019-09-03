@@ -1,4 +1,5 @@
 monolog:
+    channels: ['mailer', 'uncaught_exceptions']
     handlers:
         uncaught_exceptions:
             type: stream

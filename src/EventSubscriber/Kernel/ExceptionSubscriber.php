@@ -26,10 +26,10 @@ class ExceptionSubscriber implements EventSubscriberInterface
     /** @var ErrorResponseHandler */
     private $responseHandler;
 
-    public function __construct(ErrorResponseHandler $responseHandler, LoggerInterface $logger)
+    public function __construct(ErrorResponseHandler $responseHandler, LoggerInterface $exceptionLogger)
     {
         $this->responseHandler = $responseHandler;
-        $this->logger = $logger;
+        $this->logger = $exceptionLogger;
     }
 
     public static function getSubscribedEvents()

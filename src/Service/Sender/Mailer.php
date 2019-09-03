@@ -20,11 +20,11 @@ class Mailer
     /** @var LoggerInterface */
     private $logger;
 
-    public function __construct(\Swift_Mailer $mailer, Environment $twig, LoggerInterface $logger)
+    public function __construct(\Swift_Mailer $mailer, Environment $twig, LoggerInterface $mailerLogger)
     {
         $this->mailer = $mailer;
         $this->twig = $twig;
-        $this->logger = $logger;
+        $this->logger = $mailerLogger;
     }
 
     public function sendConfirmationEmailMessage(User $user)
