@@ -38,18 +38,6 @@ services:
             - [ setDefaultLocale, [ '%env(APP_LOCALE)%' ] ]
             - [ setTranslationFallback, [ true ] ]
 
-    Gedmo\Blameable\BlameableListener:
-        tags:
-            - { name: doctrine.event_subscriber, connection: default }
-        calls:
-            - [ setAnnotationReader, [ '@annotation_reader' ] ]
-
-    Gedmo\Loggable\LoggableListener:
-        tags:
-            - { name: doctrine.event_subscriber, connection: default }
-        calls:
-            - [ setAnnotationReader, [ '@annotation_reader' ] ]
-
     # FOS OAuth
     FOS\OAuthServerBundle\Storage\OAuthStorage:
         public: true
