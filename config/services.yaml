@@ -29,15 +29,6 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    # Gedmo Doctrine Extensions
-    Gedmo\Translatable\TranslatableListener:
-        tags:
-            - { name: doctrine.event_subscriber, connection: default }
-        calls:
-            - [ setAnnotationReader, [ '@annotation_reader' ] ]
-            - [ setDefaultLocale, [ '%env(APP_LOCALE)%' ] ]
-            - [ setTranslationFallback, [ true ] ]
-
     # FOS OAuth
     FOS\OAuthServerBundle\Storage\OAuthStorage:
         public: true
