@@ -6,9 +6,9 @@ stof_doctrine_extensions:
     orm:
         default:
             timestampable: true
-            softdeleteable: true
-            uploadable: true
+            softdeleteable: false
+            uploadable: false
             loggable: true
-            sluggable: true
+            sluggable: false
             translatable: true
             blameable: true
